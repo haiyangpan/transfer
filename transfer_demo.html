@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>穿梭框</title>
+	<style type="text/css">
+		::-webkit-scrollbar {
+			width: 0px
+		}
+		
+		.select {
+			width: 1400px;
+			height: 220px;
+			margin: 10px auto;
+		}
+		
+		.select option:hover {
+			background-color: #ddd;
+		}
+
+		.select div {
+			float: left;
+		}
+		
+		.select .select-item {
+			padding: 5px 20px;
+		}
+		
+		.select .select-item select {
+			width: 500px;
+			height: 200px;
+			border: 1px #eee solid;
+			padding: 4px;
+			font-size: 14px;
+		}
+		
+		.btn-item {
+				padding-top: 60px;
+		}
+
+		.btn-item p {
+			margin-top: 16px;
+		}
+		
+		.btn-item p span {
+			display: block;
+			text-align: center;
+			width: 50px;
+			height: 30px;
+			cursor: pointer;
+			font-size: 14px;
+			border: 1px solid #EEEEEE;
+			line-height: 30px;
+			font-size: 20px;
+		}
+	</style>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('.btn-item').attr("display","none")
+				var initData = [
+					{code: "001", name: "方案001"},
+					{code: "002", name: "方案002"},
+					{code: "003", name: "方案003"},
+					{code: "004", name: "方案004"},
+					{code: "005", name: "方案005"}
+				]
+			var htmlStr = ''
+			initData.map((item,index) => {
+				htmlStr += `<option value="${item.code}">${item.code} >>>> ${item.name}</option>`
+			})
+			$("#select1").html(htmlStr)
+			//移到右边
+			$(document).on('click', '#add', function() {
+				if(!$("#select1 option").is(":selected")) {
+					alert("请选择移动的选项")
+				} else {
+					$('#select1 option:selected').appendTo('#select2');
+					$('#select2').find('option:selected').prop('selected',false);
+				}
+			});
+			//移到左边
+			$(document).on('click', '#remove', function() {
+				if(!$("#select2 option").is(":selected")) {
+					alert("请选择移动的选项")
+				} else {
+					$('#select2 option:selected').appendTo('#select1');
+					$('#select1').find('option:selected').prop('selected',false);
+				}
+			});
+			
+			//双击选项
+			$(document).on('dblclick', '#select1', function() {
+				$("option:selected", this).appendTo('#select2');
+			});
+			//双击选项
+			$(document).on('dblclick', '#select2', function() {
+				$("option:selected", this).appendTo('#select1');
+			});
+			//全部移到右边
+			$(document).on('click', '#add_all', function() {
+				$('#select1 option').appendTo('#select2');
+			});
+			//全部移到左边
+			$(document).on('click', '#remove_all', function() {
+				$('#select2 option').appendTo('#select1');
+			});
+
+			// 获取左侧框内容
+			$(document).on("click", "#submit", function() {
+				var arr = []
+				$('#select1 option').each(function(index,docEle) {
+					var code = docEle.text.match(/(\S*) >>>> (\S*)/)[1]
+					var name = docEle.text.match(/(\S*) >>>> (\S*)/)[2]
+					arr.push({"code": code,"name": name})
+				})
+				$('#select1 option').map((index,item) => {
+					var code = item.text.match(/(\S*) >>>> (\S*)/)[1]
+					var name = item.text.match(/(\S*) >>>> (\S*)/)[2]
+					arr.push({"code": code,"name": name})
+				})
+				var parseStr = JSON.stringify(arr).match(/\[(\S*)\]/)[1]
+				console.log(parseStr)
+				alert(parseStr)
+			})
+		});
+	</script>
+</head>
+ 
+<body>
+	<div>
+		<div class="select">
+			<div class="select-item">
+				<p>服务方案：</p>
+				<select multiple="multiple" id="select1">
+x				</select>
+			</div>
+			<div class="btn-item">
+				<p><span id="remove"><</span></p>
+				<p><span id="add">></span></p>
+				<p><span id="remove_all"><<</span></p>
+				<p><span id="add_all">>></span></p>
+			</div>
+			<div class="select-item">
+				<p>未选服务方案：</p>
+				<select multiple="multiple" id="select2"></select>
+			</div>
+		</div>
+	</div>
+	<div style="text-align:left;margin:80px 100px;clear:both;">
+		<input type="button" value="提交" id="submit">
+	</div>
+</body>
+ 
+</html>

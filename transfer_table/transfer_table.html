@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style/style.css">
+</head>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<body>
+  <div id="container">
+    <div id="transfer1">
+      <span class="title">已选方案：</span>
+      <table cellspacing="0" cellpadding="0" border="0">
+        <thead>
+          <tr>
+            <th><input type="checkbox"></th>
+            <th>服务方案编号</th>
+            <th>服务方案内容</th>
+          </tr>
+        </thead>
+        <tbody id="tb1">
+            <tr>
+              <td><input type="checkbox"></td>
+              <td title="数据信息中心">数据信息中心</td>
+              <td>数据信息中心</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td title="数据信息中心">数据信息中心</td>
+                <td>数据信息中心</td>
+              </tr>
+              <tr>
+                  <td><input type="checkbox"></td>
+                  <td title="数据信息中心">数据信息中心</td>
+                  <td>数据信息中心</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td title="数据信息中心">数据信息中心</td>
+                    <td>数据信息中心</td>
+                  </tr>
+          </tbody>
+      </table>
+    </div>
+    <div id="btns">
+      <p id="remove"><span>&gt;</span></p>
+      <p id="add"><span>&lt;</span></p>
+    </div>
+    <div id="transfer2">
+        <span class="title">已选方案：</span>
+        <table cellspacing="0" cellpadding="0" border="0">
+          <thead>
+            <tr>
+              <th><input type="checkbox"></th>
+              <th>服务方案编号</th>
+              <th>服务方案内容</th>
+            </tr>
+          </thead>
+          <tbody id="tb2"></tbody>
+        </table>
+    </div>
+  </div>
+  <div class="subBtn" style="clear:both;margin-left: 100px;">
+    <input type="button" value="提交" id="submit">
+  </div>
+</body>
+<script src="./js/transfer.js"></script>
+</html>

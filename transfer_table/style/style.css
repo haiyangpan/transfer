@@ -1,0 +1,76 @@
+table td, table th, table tr {
+  border: 1px solid #ddd;
+  color: #666;
+  width: 100%;
+  height: 38px;
+}
+table {
+  width: 100%;
+  text-align: center;
+  table-layout:fixed;
+}
+#container {
+  width: 100%;
+  height: 400px;
+  margin: 20px auto;
+}
+#container > div{
+  float: left;
+}
+#transfer1, #transfer2 {
+  width: 500px;
+  /* height: 300px; */
+  border: 1px solid #eee;
+}
+#container .title {
+  padding-left: 20px;
+  font-size: 20px;
+  line-height: 36px;
+}
+#btns {
+  width: 50px;
+  height: 300px;
+  text-align: center;
+  margin: 80px 20px;
+}
+#btns p{
+  cursor: pointer;
+  line-height: 24px;
+}
+#btns p:hover {
+  background-color: #cfcece;
+  font-size: 20px;
+  color: #fff;
+}
+#container table thead {
+  background-color: #f2f2f2;
+}
+#container table td:nth-of-type(1), #container table th:nth-of-type(1) {
+  width: 10%;
+  height: 38px;
+  padding: 0 10px;
+}
+#container table tr td:nth-of-type(2),#container table tr th:nth-of-type(2) {
+  width: 40%;
+  height: 38px;
+  padding: 0 10px;
+  word-break:keep-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#container table td:nth-of-type(3),#container table tr th:nth-of-type(3) {
+  width: 50%;
+  height: 38px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#container table tbody tr:hover {
+  background: #cfcece;
+}
+#btns > p {
+  border: 1px solid #eee;
+  font-size: 20px;
+  color: #c9c9c9;
+}
